@@ -62,10 +62,8 @@
     var vplayer = document.getElementById("vplayer");
 
     function UpdateVP(x) {
-        console.log(Show, Season, Episode);
         if (x == true) {
             vplayer.src = Object.values(Database[Show])[Season][Episode]
-            console.log(Show);
         } else if (x == false) {
             vplayer.src = Database["Breaking Bad"]["1"][0]
             Show = "Breaking Bad"
