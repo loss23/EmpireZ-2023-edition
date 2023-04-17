@@ -21,6 +21,8 @@ header {
 main video {
     width: 75%;
     height: auto;
+
+    text-align: center;
 }
 
 .Controls {
