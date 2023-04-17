@@ -1,0 +1,43 @@
+body {
+    background-color: #1A1D1A;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    font-size: 1.2vh;
+
+    overflow-x: hidden;
+
+    min-height: 100vh;
+    display: flex;   
+    flex-direction: column;
+    margin: 0;
+}
+
+header {
+    background-color: #121412cc;
+    margin-bottom: auto;
+}
+
+main video {
+    width: 75%;
+    height: auto;
+}
+
+.Controls {
+    width: 100vw;
+    height: auto;
+}
+.Controls select {
+    color: white;
+    background-color: #252525;
+    border-radius: .2rem;
+    border-color: transparent;
+
+    height: 2.3rem;
+}
+
+footer {
+    background-color: #121412cc;
+    color: #636363;
+    margin-top: auto;
+}
