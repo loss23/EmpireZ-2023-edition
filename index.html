@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,22 @@
     <link rel="stylesheet" href="css/default.css">
     <title>EmpireZ - Streaming & More</title>
 </head>
+
 <body>
     <header>
         <h1>~EmpireZ~</h1>
     </header>
 
     <main>
-        <video style="border-radius: .8%;" controls controlsList="nodownload" disablePictureInPicture draggable="false" preload="metadata" class="vplayer" id="vplayer"></video>
+        <video style="border-radius: .8%;" controls controlsList="nodownload" disablePictureInPicture draggable="false"
+            preload="metadata" class="vplayer" id="vplayer"></video>
     </main>
 
     <div class="Controls" id="Controls">
-        <select id="_Show">
+        <select id="_Content">
+            <optgroup id="_Show_Sub" label="Shows">
 
+            </optgroup>
         </select>
         <select id="_Season">
 
@@ -35,86 +40,145 @@
         </h4>
     </footer>
 </body>
+
 </html>
 
 <script>
     const Database = {
-            "Breaking Bad": {
-                "1": ["https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E01.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E02.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E03.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E04.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E05.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E06.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E07.BDRip.x264-FGT.mp4"]
-            }
+        "Breaking Bad": {
+            "1": ["https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E01.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E02.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E03.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E04.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E05.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E06.BDRip.x264-FGT.mp4","https://s3.tebi.io/index/BreakingBad/Breaking.Bad.S01E07.BDRip.x264-FGT.mp4"]
+        },
+        "Spongebob": {
+            "1": ["https://s3.tebi.io/index/Spongebob%20Ep1.mp4", "https://s3.tebi.io/index/Spongebob%20Ep2.mp4","https://s3.tebi.io/index/Spongebob%20Ep3.mp4", "https://s3.tebi.io/index/Spongebob%20Ep4.mp4","https://s3.tebi.io/index/Spongebob%20Ep5.mp4", "https://s3.tebi.io/index/Spongebob%20Ep6.mp4","https://s3.tebi.io/index/Spongebob%20Ep7.mp4", "https://s3.tebi.io/index/Spongebob%20Ep8.mp4","https://s3.tebi.io/index/Spongebob%20Ep9.mp4", "https://s3.tebi.io/index/Spongebob%20Ep10.mp4","https://s3.tebi.io/index/Spongebob%20Ep11.mp4","https://s3.tebi.io/index/Spongebob%20Ep12.mp4","https://s3.tebi.io/index/Spongebob%20Ep13.mp4","https://s3.tebi.io/index/Spongebob%20Ep14.mp4","https://s3.tebi.io/index/Spongebob%20Ep15.mp4","https://s3.tebi.io/index/Spongebob%20Ep16.mp4","https://s3.tebi.io/index/Spongebob%20Ep17.mp4","https://s3.tebi.io/index/Spongebob%20Ep18.mp4","https://s3.tebi.io/index/Spongebob%20Ep19.mp4", "https://s3.tebi.io/index/Spongebob%20Ep20.mp4"],
+            "2": ["https://s3.tebi.io/index/SpongebobSeason2Ep1A.mp4"],
+        }
     }
 
     var Show;
-    var Movie;
     var Episode;
     var Season;
 
     var vplayer = document.getElementById("vplayer");
 
     function UpdateVP(x) {
-        console.log(Show,Season,Episode);
+        console.log(Show, Season, Episode);
         if (x == true) {
             vplayer.src = Object.values(Database[Show])[Season][Episode]
-        }else if (x == false) {
+            console.log(Show);
+        } else if (x == false) {
             vplayer.src = Database["Breaking Bad"]["1"][0]
             Show = "Breaking Bad"
         }
     }
 
-    if (Show == null) {
-        UpdateVP(false)
-    }else {
-        UpdateVP(true)
-    }
+    function UpdateList() {
 
-    // Show List
-
-        for (var i = 0; i < Object.values(Database).length; i++) {
-            var new_opt = document.createElement("option");
-            new_opt.value = "Breaking Bad";
-            new_opt.text = Object.keys(Database)[i];
-            _Show.appendChild(new_opt);
+        var child = _Season.lastElementChild;
+        while (child) {
+            _Season.removeChild(child);
+            child = _Season.lastElementChild;
         }
 
-    //
+        var child = _Episode.lastElementChild;
+        while (child) {
+            _Episode.removeChild(child);
+            child = _Episode.lastElementChild;
+        }
 
-    // Season List
+        // Season List
 
         for (var i = 0; i < Object.values(Database[Show]).length; i++) {
-                var new_opt = document.createElement("option");
-                new_opt.value = i;
-                new_opt.text = "Season " + (i+1);
-                _Season.appendChild(new_opt);
+            var new_opt = document.createElement("option");
+            new_opt.value = i;
+            new_opt.text = "Season " + (i + 1);
+            _Season.appendChild(new_opt);
         }
 
-    //
+        //
 
-    // Episode List
+        // Episode List
 
-        for (var i = 0; i < Database[Show]["1"].length; i++) {
-                var new_opt = document.createElement("option");
-                new_opt.value = i;
-                new_opt.text = "Episode " + (i+1);
-                _Episode.appendChild(new_opt);
+        for (var i = 0; i < Object.values(Database[Show])[Season].length; i++) {
+            var new_opt = document.createElement("option");
+            new_opt.value = i;
+            new_opt.text = "Episode " + (i + 1);
+            _Episode.appendChild(new_opt);
         }
 
-    //
+        //
+    }
 
-    _Episode.onchange = function() {
+    function UpdateEpList() {
+
+        var child = _Episode.lastElementChild;
+        while (child) {
+            _Episode.removeChild(child);
+            child = _Episode.lastElementChild;
+        }
+
+
+        // Episode List
+
+        for (var i = 0; i < Object.values(Database[Show])[Season].length; i++) {
+            var new_opt = document.createElement("option");
+            new_opt.value = i;
+            new_opt.text = "Episode " + (i + 1);
+            _Episode.appendChild(new_opt);
+        }
+
+        //
+    }
+
+    function _Full_Update() {
+        if (Show == null) {
+            Show = "Breaking Bad";
+            Episode = 0;
+            Season = 0;
+
+            // Show List
+
+            for (var i = 0; i < Object.values(Database).length; i++) {
+                var new_opt = document.createElement("option");
+                new_opt.value = Object.keys(Database)[i];
+                new_opt.text = Object.keys(Database)[i];
+                _Content.appendChild(new_opt);
+            }
+
+            //
+
+            UpdateVP(false);
+            UpdateList();
+        }
+    }
+
+    _Episode.onchange = function () {
         Episode = parseInt(_Episode.value);
         Season = parseInt(_Season.value);
-        
+
         if (Show == null) {
             UpdateVP(false)
-        }else {
+        } else {
             UpdateVP(true)
         }
     }
 
-    _Show.onchange = function() {
-        Show = _Show.value;
-        Season = 1;
-        Episode = 0;
+    _Season.onchange = function () {
+        Episode = 0
+        Season = parseInt(_Season.value);
+
+        UpdateEpList();
+        UpdateVP(true);
     }
 
+    _Content.onchange = function () {
+        Show = _Content.value;
+        Episode = 0;
+        Season = 0;
+
+        UpdateVP(true);
+        UpdateList();
+        UpdateEpList();
+    }
+
+    _Full_Update();
 </script>

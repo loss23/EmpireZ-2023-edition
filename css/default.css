@@ -5,6 +5,8 @@ body {
     text-align: center;
     font-size: 1.2vh;
 
+    text-align: center;
+
     overflow-x: hidden;
 
     min-height: 100vh;
@@ -21,6 +23,7 @@ header {
 main video {
     width: 75%;
     height: auto;
+    max-height: 795px;
 
     text-align: center;
 }
@@ -28,6 +31,7 @@ main video {
 .Controls {
     width: 100vw;
     height: auto;
+    text-align: center;
 }
 .Controls select {
     color: white;
