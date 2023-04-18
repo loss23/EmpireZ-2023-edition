@@ -2,7 +2,6 @@ body {
     background-color: #1A1D1A;
     color: #ffffff;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
     font-size: 1.2vh;
 
     text-align: center;
@@ -26,6 +25,26 @@ main video {
     max-height: 795px;
 
     text-align: center;
+}
+
+.Ad_Sect1 {
+    
+    position: absolute;
+    left: 2.5vw;
+    top: 25vh;
+
+    width: 8vw;
+    height: 45vh;
+}
+
+.Ad_Sect2 {
+
+    position: absolute;
+    right: 2.5vw;
+    top: 25vh;
+
+    width: 8vw;
+    height: 45vh;
 }
 
 .Controls {
