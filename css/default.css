@@ -27,26 +27,6 @@ main video {
     text-align: center;
 }
 
-.Ad_Sect1 {
-    
-    position: absolute;
-    left: 2.5vw;
-    top: 25vh;
-
-    width: 8vw;
-    height: 45vh;
-}
-
-.Ad_Sect2 {
-
-    position: absolute;
-    right: 2.5vw;
-    top: 25vh;
-
-    width: 8vw;
-    height: 45vh;
-}
-
 .Controls {
     width: 100vw;
     height: auto;
@@ -59,10 +39,4 @@ main video {
     border-color: transparent;
 
     height: 2.3rem;
-}
-
-footer {
-    background-color: #121412cc;
-    color: #636363;
-    margin-top: auto;
 }
